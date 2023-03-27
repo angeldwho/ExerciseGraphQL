@@ -12,8 +12,9 @@ namespace ExerciseGraphQL.BLL.Interfaces
     {
         Task<IQueryable<AuthorModel>> GetAllAsync();
         Task<AuthorModel> GetByIdAsync(int id);
-        Task<AuthorModel> AddAsync(Author author);
-        Task<AuthorModel> UpdateAsync(Author author);
+        Task<AuthorModel> AddAsync(AuthorModel author);
+        Task<AuthorModel> UpdateAsync(AuthorModel author);
+        Task DeleteAsync(int id);
 
     }
 }

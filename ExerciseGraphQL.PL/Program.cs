@@ -5,6 +5,7 @@ using ExerciseGraphQL.DAL;
 using ExerciseGraphQL.DAL.Interfaces;
 using ExerciseGraphQL.DAL.Repositories;
 using ExerciseGraphQL.PL.Configuration;
+using ExerciseGraphQL.PL.Mutations;
 using ExerciseGraphQL.PL.Queries;
 using Microsoft.EntityFrameworkCore;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -18,15 +19,15 @@ builder.Services.AddControllers();
 //builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<LibraryDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("LibraryConnection")), ServiceLifetime.Singleton);
+builder.Services.AddDbContext<LibraryDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("LibraryConnection")).EnableSensitiveDataLogging(), ServiceLifetime.Singleton);
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IBookService, BookService>();
 
 builder.Services.AddGraphQLServer()
-    .AddQueryType<AuthorQuery>();
-    //.AddMutationType<Mutation>()
+    .AddQueryType<AuthorQuery>()
+    .AddMutationType<AuthorMutation>();
     //.AddFiltering()
     //.AddSorting()
     //.AddProjections();

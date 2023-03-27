@@ -36,17 +36,27 @@ namespace ExerciseGraphQL.DAL.Repositories
             return entity;
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity)
+        public async Task<TEntity> UpdateAsync(TEntity entity, int id)
         {
-            _dbSet.Update(entity);
-            await _dbContext.SaveChangesAsync();
-            return entity;
+            var existingEntity = await _dbContext.Set<TEntity>().FindAsync(id);
+            if (existingEntity != null)
+            {
+                _dbContext.Entry(existingEntity).CurrentValues.SetValues(entity);
+                await _dbContext.SaveChangesAsync();
+                return existingEntity;
+            }
+            return null;
         }
 
-        public async Task DeleteAsync(TEntity entity)
+        public async Task DeleteAsync(object id)
         {
-            _dbSet.Remove(entity);
-            await _dbContext.SaveChangesAsync();
+            var entity = await _dbSet.FindAsync(id);
+
+            if(entity != null) {
+                _dbSet.Remove(entity);
+                await _dbContext.SaveChangesAsync();
+            }
+                
         }
     }
 }

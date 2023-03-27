@@ -12,7 +12,7 @@ namespace ExerciseGraphQL.BLL.Interfaces
     {
         Task<IQueryable<BookModel>> GetAllAsync();
         Task<BookModel> GetByIdAsync(int id);
-        Task<BookModel> AddAsync(Book author);
-        Task<BookModel> UpdateAsync(Book author);
+        Task<BookModel> AddAsync(BookModel book);
+        Task<BookModel> UpdateAsync(BookModel book);
     }
 }

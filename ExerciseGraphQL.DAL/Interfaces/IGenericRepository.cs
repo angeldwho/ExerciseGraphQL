@@ -13,7 +13,7 @@ namespace ExerciseGraphQL.DAL.Interfaces
         Task<IEnumerable<TEntity>> GetByConditionAsync(Expression<Func<TEntity, bool>> expression);
         Task<TEntity> GetByIdAsync(object id);
         Task<TEntity> AddAsync(TEntity entity);
-        Task<TEntity> UpdateAsync(TEntity entity);
-        Task DeleteAsync(TEntity entity);
+        Task<TEntity> UpdateAsync(TEntity entity, int id);
+        Task DeleteAsync(object id);
     }
 }

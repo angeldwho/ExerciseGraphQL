@@ -33,21 +33,14 @@ namespace ExerciseGraphQL.BLL.Services
             return _mapper.Map<AuthorModel>(await _authorRepository.GetByIdAsync(id));
         }
 
-        public async Task<AuthorModel> AddAsync(Author author)
+        public async Task<AuthorModel> AddAsync(AuthorModel author)
         {
-            return _mapper.Map<AuthorModel>(await _authorRepository.AddAsync(author));
+            return _mapper.Map<AuthorModel>(await _authorRepository.AddAsync(_mapper.Map<Author>(author)));
         }
 
-        public async Task<AuthorModel> UpdateAsync(Author author)
+        public async Task<AuthorModel> UpdateAsync(AuthorModel author)
         {
-            var existingAuthor = await _authorRepository.GetByIdAsync(author.ID);
-
-            if (existingAuthor == null)
-            {
-                return null;
-            }
-
-            return _mapper.Map<AuthorModel>(await _authorRepository.UpdateAsync(existingAuthor));
+            return _mapper.Map<AuthorModel>(await _authorRepository.UpdateAsync(_mapper.Map<Author>(author),author.ID));
         }
 
         public async Task DeleteAsync(int id)
