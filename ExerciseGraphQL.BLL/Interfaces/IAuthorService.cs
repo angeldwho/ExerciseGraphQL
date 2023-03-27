@@ -10,7 +10,7 @@ namespace ExerciseGraphQL.BLL.Interfaces
 {
     public interface IAuthorService
     {
-        Task<IEnumerable<AuthorModel>> GetAllAsync();
+        Task<IAsyncEnumerable<AuthorModel>> GetAllAsync();
         Task<AuthorModel> GetByIdAsync(int id);
         Task<AuthorModel> AddAsync(Author author);
         Task<AuthorModel> UpdateAsync(Author author);

@@ -22,9 +22,9 @@ namespace ExerciseGraphQL.BLL.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<AuthorModel>> GetAllAsync()
+        public async Task<IAsyncEnumerable<AuthorModel>> GetAllAsync()
         {
-            return _mapper.Map<IEnumerable<AuthorModel>>(await _authorRepository.GetAllAsync());
+            return _mapper.Map<IAsyncEnumerable<AuthorModel>>(await _authorRepository.GetAllAsync());
         }
 
         public async Task<AuthorModel> GetByIdAsync(int id)
