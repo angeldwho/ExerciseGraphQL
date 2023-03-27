@@ -10,5 +10,9 @@ namespace ExerciseGraphQL.DAL.Repositories
 {
     public class AuthorRepository : GenericRepository<Author>, IAuthorRepository
     {
+        public AuthorRepository(LibraryDBContext context) : base(context)
+        {
+
+        }
     }
 }

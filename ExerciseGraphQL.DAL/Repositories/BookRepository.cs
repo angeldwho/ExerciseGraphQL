@@ -10,6 +10,9 @@ namespace ExerciseGraphQL.DAL.Repositories
 {
     public class BookRepository : GenericRepository<Book>, IBookRepository
     {
-       
+        public BookRepository(LibraryDBContext context) : base(context)
+        {
+
+        }
     }
 }

@@ -13,10 +13,7 @@ namespace ExerciseGraphQL.DAL.Repositories
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<TEntity>();
         }
-        public GenericRepository()
-        {
 
-        }
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();

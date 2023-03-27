@@ -10,7 +10,7 @@ namespace ExerciseGraphQL.BLL.Interfaces
 {
     public interface IBookService
     {
-        Task<IEnumerable<BookModel>> GetAllAsync();
+        Task<IQueryable<BookModel>> GetAllAsync();
         Task<BookModel> GetByIdAsync(int id);
         Task<BookModel> AddAsync(Book author);
         Task<BookModel> UpdateAsync(Book author);

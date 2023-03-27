@@ -11,7 +11,7 @@ namespace ExerciseGraphQL.PL.Queries
         {
             _authorService = authorService;
         }
-        public Task<IEnumerable<AuthorModel>> GetAuthors()
+        public Task<IQueryable<AuthorModel>> GetAuthors()
         {
             return _authorService.GetAllAsync();
         }
