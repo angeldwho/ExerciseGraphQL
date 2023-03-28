@@ -28,9 +28,17 @@ builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddGraphQLServer()
     .AddQueryType<AuthorQuery>()
     .AddMutationType<AuthorMutation>();
-    //.AddFiltering()
-    //.AddSorting()
-    //.AddProjections();
+//.AddFiltering()
+//.AddSorting()
+//.AddProjections();
+
+builder.Services.AddAuthentication()
+    .AddGoogle(options =>
+    {
+        options.ClientId = "918716209676-tke5hge2i7hv965ikquu7ksk4fj28102.apps.googleusercontent.com";
+        options.ClientSecret = "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";
+    });
+
 
 // Configura AutoMapper
 var mapperConfig = new MapperConfiguration(mc =>
@@ -57,7 +65,7 @@ app.UseEndpoints(endpoints =>
 });
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
