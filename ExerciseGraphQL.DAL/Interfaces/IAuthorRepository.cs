@@ -9,5 +9,6 @@ namespace ExerciseGraphQL.DAL.Interfaces
 {
     public interface IAuthorRepository : IGenericRepository<Author>
     {
+        IQueryable<AuthorByCategory> GetMyAuthorsGroupedByCategory();
     }
 }

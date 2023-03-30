@@ -15,6 +15,8 @@ namespace ExerciseGraphQL.BLL.Interfaces
         Task<AuthorModel> AddAsync(AuthorModel author);
         Task<AuthorModel> UpdateAsync(AuthorModel author);
         Task DeleteAsync(int id);
+        Task<int> GetCountAsync();
+        IQueryable<AuthorByCategory> GetMyObjectsGroupedByCategory();
 
     }
 }

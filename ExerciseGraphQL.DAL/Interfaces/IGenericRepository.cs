@@ -14,6 +14,7 @@ namespace ExerciseGraphQL.DAL.Interfaces
         Task<TEntity> GetByIdAsync(object id);
         Task<TEntity> AddAsync(TEntity entity);
         Task<TEntity> UpdateAsync(TEntity entity, int id);
-        Task DeleteAsync(object id);
+        Task DeleteAsync(TEntity entity);
+        Task<int> GetCountAsync();
     }
 }

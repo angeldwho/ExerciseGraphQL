@@ -10,6 +10,6 @@ namespace ExerciseGraphQL.BLL.Models
     {
         public int ID { get; set; }
         public string Title { get; set; }
-        public AuthorModel Author { get; set; }
+        public int AuthorId { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HotChocolate;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace ExerciseGraphQL.DAL.Repositories
@@ -48,15 +49,17 @@ namespace ExerciseGraphQL.DAL.Repositories
             return null;
         }
 
-        public async Task DeleteAsync(object id)
+        public async Task DeleteAsync(TEntity entity)
         {
-            var entity = await _dbSet.FindAsync(id);
-
             if(entity != null) {
                 _dbSet.Remove(entity);
                 await _dbContext.SaveChangesAsync();
             }
                 
+        }
+        public async Task<int> GetCountAsync()
+        {
+            return await _dbSet.CountAsync();
         }
     }
 }

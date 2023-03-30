@@ -27,7 +27,9 @@ builder.Services.AddScoped<IBookService, BookService>();
 
 builder.Services.AddGraphQLServer()
     .AddQueryType<AuthorQuery>()
-    .AddMutationType<AuthorMutation>();
+    .AddMutationType<AuthorMutation>()
+    .AddQueryType<BookQuery>()
+    .AddMutationType<BookMutation>();
     //.AddFiltering()
     //.AddSorting()
     //.AddProjections();

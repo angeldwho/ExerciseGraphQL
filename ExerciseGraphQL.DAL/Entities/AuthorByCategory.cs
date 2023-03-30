@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ExerciseGraphQL.DAL.Entities
 {
-    public class Author
+    public class AuthorByCategory
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public virtual List<Book> Books { get; set; }
+        public int Id { get; set; }
+        public string Category { get; set; }
+        public List<Author> Authors { get; set; }
     }
 }

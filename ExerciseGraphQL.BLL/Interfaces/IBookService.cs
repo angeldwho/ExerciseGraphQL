@@ -14,5 +14,6 @@ namespace ExerciseGraphQL.BLL.Interfaces
         Task<BookModel> GetByIdAsync(int id);
         Task<BookModel> AddAsync(BookModel book);
         Task<BookModel> UpdateAsync(BookModel book);
+        Task DeleteAsync(int id);
     }
 }

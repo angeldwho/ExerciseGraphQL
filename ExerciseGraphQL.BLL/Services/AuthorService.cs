@@ -54,5 +54,13 @@ namespace ExerciseGraphQL.BLL.Services
 
             await _authorRepository.DeleteAsync(existingAuthor);
         }
+        public async Task<int> GetCountAsync()
+        {
+            return await _authorRepository.GetCountAsync();
+        }
+        public IQueryable<AuthorByCategory> GetMyObjectsGroupedByCategory()
+        {
+            return _authorRepository.GetMyAuthorsGroupedByCategory();
+        }
     }
 }
