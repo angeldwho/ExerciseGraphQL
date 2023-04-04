@@ -54,6 +54,5 @@ namespace ExerciseGraphQL.BLL.Services
             await _bookRepository.DeleteAsync(existingAuthor);
         }
 
-
     }
 }

@@ -4,12 +4,14 @@ using ExerciseGraphQL.DAL.Entities;
 
 namespace ExerciseGraphQL.PL.Mutations
 {
-    public class AuthorMutation
+    public class Mutation
     {
         private readonly IAuthorService _authorService;
-        public AuthorMutation(IAuthorService authorService)
+        private readonly IBookService _bookService;
+        public Mutation(IAuthorService authorService, IBookService bookService)
         {
             _authorService = authorService;
+            _bookService = bookService;
         }
         public async Task<AuthorModel> AddAuthor(string input)
         {
@@ -26,6 +28,23 @@ namespace ExerciseGraphQL.PL.Mutations
         public async Task<bool> DeleteAuthor(int id)
         {
             await _authorService.DeleteAsync(id);
+            return true;
+        }
+        public async Task<BookModel> AddBook(string title, int author)
+        {
+            var book = new BookModel { Title = title };
+            return await _bookService.AddAsync(book);
+        }
+
+        public async Task<BookModel> UpdateBook(int id, string title, int author)
+        {
+            var book = new BookModel { ID = id, Title = title };
+            return await _bookService.UpdateAsync(book);
+        }
+
+        public async Task<bool> DeleteBook(int id)
+        {
+            await _bookService.DeleteAsync(id);
             return true;
         }
     }

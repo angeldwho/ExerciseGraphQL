@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExerciseGraphQL.BLL.Models
+namespace ExerciseGraphQL.DAL.Interfaces
 {
-    public class BookModel
+    public class IPublication
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public int YearPublished { get; set; }
-        public int AuthorId { get; set; }
     }
 }

@@ -14,6 +14,8 @@ namespace ExerciseGraphQL.PL.Configuration
 
             CreateMap<Book, BookModel>().ReverseMap();
             CreateMap<BookModel, BookViewModel>().ReverseMap();
+
+            CreateMap<Magazine, MagazineModel>().ReverseMap();
         }
     }
 }

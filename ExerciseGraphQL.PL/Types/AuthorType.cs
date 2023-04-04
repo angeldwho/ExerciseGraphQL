@@ -8,6 +8,7 @@ namespace ExerciseGraphQL.PL.Types
         {
             descriptor.Field(a => a.ID).Type<NonNullType<IntType>>();
             descriptor.Field(a => a.Name).Type<NonNullType<StringType>>();
+
         }
     }
 }

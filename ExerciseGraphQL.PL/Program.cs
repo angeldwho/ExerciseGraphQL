@@ -7,8 +7,14 @@ using ExerciseGraphQL.DAL.Repositories;
 using ExerciseGraphQL.PL.Configuration;
 using ExerciseGraphQL.PL.Mutations;
 using ExerciseGraphQL.PL.Queries;
+using ExerciseGraphQL.PL.Types;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using HotChocolate.AspNetCore;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using ExerciseGraphQL.DAL.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,15 +30,16 @@ builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IPublication, Book>();
+builder.Services.AddScoped<IPublication, Magazine>();
 
 builder.Services.AddGraphQLServer()
-    .AddQueryType<AuthorQuery>()
-    .AddMutationType<AuthorMutation>()
-    .AddQueryType<BookQuery>()
-    .AddMutationType<BookMutation>();
-    //.AddFiltering()
-    //.AddSorting()
-    //.AddProjections();
+    .AddQueryType<ExerciseGraphQL.PL.Queries.Query>()
+    .AddMutationType<Mutation>()
+    .InitializeOnStartup();
+//.AddFiltering()
+//.AddSorting()
+//.AddProjections();
 
 // Configura AutoMapper
 var mapperConfig = new MapperConfiguration(mc =>

@@ -1,4 +1,5 @@
 ﻿using ExerciseGraphQL.DAL.Entities;
+using ExerciseGraphQL.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,7 @@ namespace ExerciseGraphQL.DAL
 
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
+        public DbSet<Magazine> Magazines { get; set; }
+        public DbSet<IPublication> Publications { get; set; }
     }
 }   

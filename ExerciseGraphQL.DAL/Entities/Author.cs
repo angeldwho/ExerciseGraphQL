@@ -11,5 +11,6 @@ namespace ExerciseGraphQL.DAL.Entities
         public int ID { get; set; }
         public string Name { get; set; }
         public virtual List<Book> Books { get; set; }
+        public virtual List<Magazine> Magazines { get; set; }
     }
 }

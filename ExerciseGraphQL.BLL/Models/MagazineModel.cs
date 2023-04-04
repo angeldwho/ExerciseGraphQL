@@ -1,18 +1,17 @@
-﻿using ExerciseGraphQL.DAL.Interfaces;
+﻿using ExerciseGraphQL.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExerciseGraphQL.DAL.Entities
+namespace ExerciseGraphQL.BLL.Models
 {
-    public class Book : IPublication
+    public class MagazineModel
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public int YearPublished { get; set; }
         public int AuthorId { get; set; }
-        public virtual Author Author { get; set; }
     }
 }
